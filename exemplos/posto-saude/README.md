@@ -16,4 +16,4 @@ A análise da médica pode indicar necessidade de procedimento, cenário em
 que o encaminhamento correspondente é feito, ou não. Neste último, o
 paciente é considerado assistido.
 
-![](atendimento-posto-saude.png)
+<img src="atendimento-posto-saude.png" width="600">
