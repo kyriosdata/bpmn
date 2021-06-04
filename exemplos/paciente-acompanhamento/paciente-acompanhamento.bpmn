@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0y0crlu" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.8.1" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.15.0">
+  <bpmn:process id="Process_19293qn" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="5h (da manhã)">
+      <bpmn:outgoing>Flow_0g5ogna</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="TimerEventDefinition_0mv2rd1" />
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_0g5ogna" sourceRef="StartEvent_1" targetRef="Activity_0jmv5rk" />
+    <bpmn:serviceTask id="Activity_0jmv5rk" name="Recuperar agendamentos do dia anterior">
+      <bpmn:incoming>Flow_0g5ogna</bpmn:incoming>
+      <bpmn:outgoing>Flow_0x348fl</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_0x348fl" sourceRef="Activity_0jmv5rk" targetRef="Activity_0ep9vc7" />
+    <bpmn:serviceTask id="Activity_0ep9vc7" name="Selecionar agendamentos não realizados">
+      <bpmn:incoming>Flow_0x348fl</bpmn:incoming>
+      <bpmn:outgoing>Flow_1txyxbn</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_1txyxbn" sourceRef="Activity_0ep9vc7" targetRef="Activity_1eb6q5v" />
+    <bpmn:endEvent id="Event_1gld8s1" name="Agendamentos não realizados comunicados ao responsável">
+      <bpmn:incoming>Flow_1gr0i1d</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1gr0i1d" sourceRef="Activity_1eb6q5v" targetRef="Event_1gld8s1" />
+    <bpmn:sendTask id="Activity_1eb6q5v" name="Avisar responsável acerca de agendamentos não realizados">
+      <bpmn:incoming>Flow_1txyxbn</bpmn:incoming>
+      <bpmn:outgoing>Flow_1gr0i1d</bpmn:outgoing>
+    </bpmn:sendTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_19293qn">
+      <bpmndi:BPMNEdge id="Flow_0g5ogna_di" bpmnElement="Flow_0g5ogna">
+        <di:waypoint x="215" y="117" />
+        <di:waypoint x="270" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0x348fl_di" bpmnElement="Flow_0x348fl">
+        <di:waypoint x="370" y="117" />
+        <di:waypoint x="430" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1txyxbn_di" bpmnElement="Flow_1txyxbn">
+        <di:waypoint x="530" y="117" />
+        <di:waypoint x="590" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1gr0i1d_di" bpmnElement="Flow_1gr0i1d">
+        <di:waypoint x="690" y="117" />
+        <di:waypoint x="752" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_18bsnxa_di" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="99" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="161" y="142" width="72" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0hys74q_di" bpmnElement="Activity_0jmv5rk">
+        <dc:Bounds x="270" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_05zzoab_di" bpmnElement="Activity_0ep9vc7">
+        <dc:Bounds x="430" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1gld8s1_di" bpmnElement="Event_1gld8s1">
+        <dc:Bounds x="752" y="99" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="730" y="142" width="81" height="53" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1spykhl_di" bpmnElement="Activity_1eb6q5v">
+        <dc:Bounds x="590" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
