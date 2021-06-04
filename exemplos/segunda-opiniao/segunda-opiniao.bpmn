@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0mtixoc" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.8.1" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.15.0">
+  <bpmn:process id="Process_0pkavl2" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="Segunda opinião é desejada">
+      <bpmn:outgoing>Flow_1rv9kx9</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_1rv9kx9" sourceRef="StartEvent_1" targetRef="Activity_0ar66me" />
+    <bpmn:sequenceFlow id="Flow_111ab37" sourceRef="Activity_0ar66me" targetRef="Activity_1rnj1kx" />
+    <bpmn:boundaryEvent id="Event_1oafhnm" name="72 horas" attachedToRef="Activity_1rnj1kx">
+      <bpmn:outgoing>Flow_0j6biha</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="TimerEventDefinition_02s92se" />
+    </bpmn:boundaryEvent>
+    <bpmn:endEvent id="Event_1thcc1j" name="Segunda opinião não virá">
+      <bpmn:incoming>Flow_0j6biha</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0j6biha" sourceRef="Event_1oafhnm" targetRef="Event_1thcc1j" />
+    <bpmn:endEvent id="Event_0lhdae0" name="Segunda opinião recebida">
+      <bpmn:incoming>Flow_0enmmfu</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0enmmfu" sourceRef="Activity_1rnj1kx" targetRef="Event_0lhdae0" />
+    <bpmn:sendTask id="Activity_0ar66me" name="Requisitar segunda opinião">
+      <bpmn:incoming>Flow_1rv9kx9</bpmn:incoming>
+      <bpmn:outgoing>Flow_111ab37</bpmn:outgoing>
+    </bpmn:sendTask>
+    <bpmn:receiveTask id="Activity_1rnj1kx" name="Aguardar segunda opinião">
+      <bpmn:incoming>Flow_111ab37</bpmn:incoming>
+      <bpmn:outgoing>Flow_0enmmfu</bpmn:outgoing>
+    </bpmn:receiveTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_0pkavl2">
+      <bpmndi:BPMNEdge id="Flow_111ab37_di" bpmnElement="Flow_111ab37">
+        <di:waypoint x="375" y="117" />
+        <di:waypoint x="430" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0j6biha_di" bpmnElement="Flow_0j6biha">
+        <di:waypoint x="480" y="175" />
+        <di:waypoint x="480" y="200" />
+        <di:waypoint x="592" y="200" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0enmmfu_di" bpmnElement="Flow_0enmmfu">
+        <di:waypoint x="530" y="117" />
+        <di:waypoint x="592" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1rv9kx9_di" bpmnElement="Flow_1rv9kx9">
+        <di:waypoint x="220" y="117" />
+        <di:waypoint x="275" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_0lhdae0_di" bpmnElement="Event_0lhdae0">
+        <dc:Bounds x="592" y="99" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="569" y="142" width="83" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1thcc1j_di" bpmnElement="Event_1thcc1j">
+        <dc:Bounds x="592" y="182" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="569" y="225" width="83" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_119mq17_di" bpmnElement="Activity_1rnj1kx">
+        <dc:Bounds x="430" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1ndj0hd_di" bpmnElement="Activity_0ar66me">
+        <dc:Bounds x="275" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="184" y="99" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="161" y="142" width="83" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1am67br_di" bpmnElement="Event_1oafhnm">
+        <dc:Bounds x="462" y="139" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="488" y="182" width="44" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
