@@ -8,4 +8,4 @@ fornecida.
 
 Este processo se inicia com a demanda de segunda opinião, que será encaminhada pela tarefa "Requisitar segunda opinião". Imediatamente o processo passa a aguardar pela segunda opinião. Quem envia é identificado pela "carta" hachurada, quem espera por mensagem é a "carta" não hachurada. Observe que a tarefa "Aguardar segunda opinião" termina quando a mensagem (segunda opinião) for recebida ou quando for transcorrido o período de 72 horas, o que ocorrer primeiro. Neste último caso o processo assume que a segunda opinião "não virá".
 
-<img src="segunda-opiniao.png" width="200">
+<img src="segunda-opiniao.png" width="400">
