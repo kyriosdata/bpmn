@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0tkdpzt" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.8.1" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.15.0">
+  <bpmn:process id="Process_1st0py3" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="Impressora para reparo">
+      <bpmn:outgoing>Flow_1mv5y1g</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:task id="Activity_131zlkd" name="Localizar cadastro do cliente">
+      <bpmn:incoming>Flow_1mv5y1g</bpmn:incoming>
+      <bpmn:outgoing>Flow_1rbx25m</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_1mv5y1g" sourceRef="StartEvent_1" targetRef="Activity_131zlkd" />
+    <bpmn:exclusiveGateway id="Gateway_06v24v8" name="Tem cadastro?">
+      <bpmn:incoming>Flow_1rbx25m</bpmn:incoming>
+      <bpmn:outgoing>Flow_1gp11d3</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1jtv9yx</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_1rbx25m" sourceRef="Activity_131zlkd" targetRef="Gateway_06v24v8" />
+    <bpmn:task id="Activity_0mgc9b2" name="Efetuar cadastro">
+      <bpmn:incoming>Flow_1gp11d3</bpmn:incoming>
+      <bpmn:outgoing>Flow_0nfnsyz</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_1gp11d3" name="Não" sourceRef="Gateway_06v24v8" targetRef="Activity_0mgc9b2" />
+    <bpmn:task id="Activity_0bkqnml" name="Registrar detalhes do reparo">
+      <bpmn:incoming>Flow_0nfnsyz</bpmn:incoming>
+      <bpmn:incoming>Flow_1jtv9yx</bpmn:incoming>
+      <bpmn:outgoing>Flow_1tn4uit</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_0nfnsyz" sourceRef="Activity_0mgc9b2" targetRef="Activity_0bkqnml" />
+    <bpmn:task id="Activity_13vqemr" name="Encaminhar para análise">
+      <bpmn:incoming>Flow_1tn4uit</bpmn:incoming>
+      <bpmn:outgoing>Flow_0diaw8t</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_1tn4uit" sourceRef="Activity_0bkqnml" targetRef="Activity_13vqemr" />
+    <bpmn:sequenceFlow id="Flow_0diaw8t" sourceRef="Activity_13vqemr" targetRef="Event_0zdtyw3" />
+    <bpmn:endEvent id="Event_0zdtyw3" name="Requisição de análise">
+      <bpmn:incoming>Flow_0diaw8t</bpmn:incoming>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_1gnrxva" />
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1jtv9yx" name="Sim" sourceRef="Gateway_06v24v8" targetRef="Activity_0bkqnml" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1st0py3">
+      <bpmndi:BPMNEdge id="Flow_1mv5y1g_di" bpmnElement="Flow_1mv5y1g">
+        <di:waypoint x="220" y="177" />
+        <di:waypoint x="269" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1rbx25m_di" bpmnElement="Flow_1rbx25m">
+        <di:waypoint x="369" y="177" />
+        <di:waypoint x="423" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1gp11d3_di" bpmnElement="Flow_1gp11d3">
+        <di:waypoint x="473" y="177" />
+        <di:waypoint x="527" y="177" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="490" y="159" width="21" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0nfnsyz_di" bpmnElement="Flow_0nfnsyz">
+        <di:waypoint x="627" y="177" />
+        <di:waypoint x="681" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1tn4uit_di" bpmnElement="Flow_1tn4uit">
+        <di:waypoint x="781" y="177" />
+        <di:waypoint x="835" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0diaw8t_di" bpmnElement="Flow_0diaw8t">
+        <di:waypoint x="935" y="177" />
+        <di:waypoint x="982" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1jtv9yx_di" bpmnElement="Flow_1jtv9yx">
+        <di:waypoint x="448" y="152" />
+        <di:waypoint x="448" y="100" />
+        <di:waypoint x="731" y="100" />
+        <di:waypoint x="731" y="137" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="460" y="113" width="19" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="184" y="159" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="162" y="202" width="81" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1lbmtg3_di" bpmnElement="Event_0zdtyw3">
+        <dc:Bounds x="982" y="159" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="965" y="202" width="70" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_131zlkd_di" bpmnElement="Activity_131zlkd">
+        <dc:Bounds x="269" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_06v24v8_di" bpmnElement="Gateway_06v24v8" isMarkerVisible="true">
+        <dc:Bounds x="423" y="152" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="412" y="209" width="72" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0mgc9b2_di" bpmnElement="Activity_0mgc9b2">
+        <dc:Bounds x="527" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0bkqnml_di" bpmnElement="Activity_0bkqnml">
+        <dc:Bounds x="681" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_13vqemr_di" bpmnElement="Activity_13vqemr">
+        <dc:Bounds x="835" y="137" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
