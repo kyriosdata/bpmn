@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0tkdpzt" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.8.1" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.15.0">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0tkdpzt" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.8.1" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.15.0">
   <bpmn:process id="Process_1st0py3" isExecutable="true">
     <bpmn:startEvent id="StartEvent_1" name="Impressora com defeito">
       <bpmn:outgoing>Flow_06e1ynb</bpmn:outgoing>
@@ -17,7 +17,7 @@
     <bpmn:exclusiveGateway id="Gateway_0d0ojla" name="Já cadastrado?">
       <bpmn:incoming>Flow_1xe7au9</bpmn:incoming>
       <bpmn:outgoing>Flow_198vbvw</bpmn:outgoing>
-      <bpmn:outgoing>Flow_0sx7vkg</bpmn:outgoing>
+      <bpmn:outgoing>usuario_cadastrado</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="Flow_1xe7au9" sourceRef="Activity_0hbsups" targetRef="Gateway_0d0ojla" />
     <bpmn:task id="Activity_1h5ners" name="Fornecer informações para cadastro">
@@ -27,7 +27,7 @@
     <bpmn:sequenceFlow id="Flow_198vbvw" name="Não" sourceRef="Gateway_0d0ojla" targetRef="Activity_1h5ners" />
     <bpmn:task id="Activity_1kmwbmw" name="Fornecer informações sobre impressora">
       <bpmn:incoming>Flow_1bf2bui</bpmn:incoming>
-      <bpmn:incoming>Flow_0sx7vkg</bpmn:incoming>
+      <bpmn:incoming>usuario_cadastrado</bpmn:incoming>
       <bpmn:outgoing>Flow_1cq4u8n</bpmn:outgoing>
     </bpmn:task>
     <bpmn:sequenceFlow id="Flow_1bf2bui" sourceRef="Activity_1h5ners" targetRef="Activity_1kmwbmw" />
@@ -41,7 +41,9 @@
       <bpmn:incoming>Flow_18p3ddc</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_18p3ddc" sourceRef="Event_1ich1j2" targetRef="Event_024n5lb" />
-    <bpmn:sequenceFlow id="Flow_0sx7vkg" name="Sim" sourceRef="Gateway_0d0ojla" targetRef="Activity_1kmwbmw" />
+    <bpmn:sequenceFlow id="usuario_cadastrado" name="Sim" sourceRef="Gateway_0d0ojla" targetRef="Activity_1kmwbmw">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=(usuarioCadastrado=true)</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1st0py3">
@@ -76,7 +78,7 @@
         <di:waypoint x="953" y="120" />
         <di:waypoint x="992" y="120" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0sx7vkg_di" bpmnElement="Flow_0sx7vkg">
+      <bpmndi:BPMNEdge id="Flow_0sx7vkg_di" bpmnElement="usuario_cadastrado">
         <di:waypoint x="566" y="95" />
         <di:waypoint x="566" y="50" />
         <di:waypoint x="825" y="50" />
