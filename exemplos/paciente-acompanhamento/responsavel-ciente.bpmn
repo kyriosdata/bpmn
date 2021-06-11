@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0o1r53d" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.8.1" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.15.0">
-  <bpmn:process id="Process_1hqkjwv" isExecutable="true">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0o1r53d" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.8.1" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.15.0">
+  <bpmn:process id="ServicoRecuperarMensagens" name="recuperarMensagens" isExecutable="true" camunda:versionTag="1.0.0">
     <bpmn:startEvent id="StartEvent_1" name="Login do responsável">
       <bpmn:outgoing>Flow_04xlvqe</bpmn:outgoing>
     </bpmn:startEvent>
     <bpmn:sequenceFlow id="Flow_04xlvqe" sourceRef="StartEvent_1" targetRef="Activity_0t1smtm" />
-    <bpmn:serviceTask id="Activity_0t1smtm" name="Recuperar mensagens">
+    <bpmn:serviceTask id="Activity_0t1smtm" name="Recuperar mensagens" camunda:type="external" camunda:topic="recuperarMensagens">
       <bpmn:incoming>Flow_04xlvqe</bpmn:incoming>
       <bpmn:outgoing>Flow_0ff6tnz</bpmn:outgoing>
     </bpmn:serviceTask>
@@ -16,7 +16,7 @@
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="Flow_0ff6tnz" sourceRef="Activity_0t1smtm" targetRef="Gateway_1q8op4k" />
     <bpmn:sequenceFlow id="Flow_0d5qqa5" name="Sim" sourceRef="Gateway_1q8op4k" targetRef="Activity_1ot8w7i" />
-    <bpmn:serviceTask id="Activity_1ot8w7i" name="Exibir mensagens">
+    <bpmn:serviceTask id="Activity_1ot8w7i" name="Exibir mensagens" camunda:type="external" camunda:topic="exibirMensagens">
       <bpmn:incoming>Flow_0d5qqa5</bpmn:incoming>
       <bpmn:outgoing>Flow_1kpnz0s</bpmn:outgoing>
     </bpmn:serviceTask>
@@ -33,30 +33,7 @@
     <bpmn:sequenceFlow id="Flow_0s0dfz8" name="Não" sourceRef="Gateway_1q8op4k" targetRef="Event_14ew4ju" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
-    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1hqkjwv">
-      <bpmndi:BPMNEdge id="Flow_04xlvqe_di" bpmnElement="Flow_04xlvqe">
-        <di:waypoint x="215" y="177" />
-        <di:waypoint x="270" y="177" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0ff6tnz_di" bpmnElement="Flow_0ff6tnz">
-        <di:waypoint x="370" y="177" />
-        <di:waypoint x="425" y="177" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0d5qqa5_di" bpmnElement="Flow_0d5qqa5">
-        <di:waypoint x="475" y="177" />
-        <di:waypoint x="530" y="177" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="493" y="159" width="19" height="14" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1kpnz0s_di" bpmnElement="Flow_1kpnz0s">
-        <di:waypoint x="630" y="177" />
-        <di:waypoint x="690" y="177" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1nxh9kl_di" bpmnElement="Flow_1nxh9kl">
-        <di:waypoint x="790" y="177" />
-        <di:waypoint x="852" y="177" />
-      </bpmndi:BPMNEdge>
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="ServicoRecuperarMensagens">
       <bpmndi:BPMNEdge id="Flow_0s0dfz8_di" bpmnElement="Flow_0s0dfz8">
         <di:waypoint x="450" y="152" />
         <di:waypoint x="450" y="100" />
@@ -65,6 +42,29 @@
         <bpmndi:BPMNLabel>
           <dc:Bounds x="650" y="82" width="21" height="14" />
         </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1nxh9kl_di" bpmnElement="Flow_1nxh9kl">
+        <di:waypoint x="790" y="177" />
+        <di:waypoint x="852" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1kpnz0s_di" bpmnElement="Flow_1kpnz0s">
+        <di:waypoint x="630" y="177" />
+        <di:waypoint x="690" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0d5qqa5_di" bpmnElement="Flow_0d5qqa5">
+        <di:waypoint x="475" y="177" />
+        <di:waypoint x="530" y="177" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="493" y="159" width="19" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0ff6tnz_di" bpmnElement="Flow_0ff6tnz">
+        <di:waypoint x="370" y="177" />
+        <di:waypoint x="425" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_04xlvqe_di" bpmnElement="Flow_04xlvqe">
+        <di:waypoint x="215" y="177" />
+        <di:waypoint x="270" y="177" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="179" y="159" width="36" height="36" />
