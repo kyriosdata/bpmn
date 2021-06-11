@@ -12,4 +12,4 @@ clínico, a presença de alterações em órgãos alvo e comorbidades.
 Conforme as regras pertinentes, a solicitação é encaminhada para o
 regulador ou aprovada.
 
-<img src="protocolo-regulacao.png" width="600">
+<img src="protocolo-regulacao.png" width="700">
