@@ -25,4 +25,4 @@ para florescer; (b) identificar ação e (c) florescer (a execução da ação).
 Sim, aprender aqui é sinônimo de florescer, o que está ligado à satisfação, e
 o oposto de "no pain no gain". Isto é promoção do seu bem-estar.
 
-<img src="executar-acao.png" width="600">
+<img src="executar-acao.png" width="800">
