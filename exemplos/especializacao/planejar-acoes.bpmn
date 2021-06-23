@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0jv9rsd" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.8.1" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.15.0">
+  <bpmn:process id="Process_0lusk8g" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="Novo microcurso">
+      <bpmn:outgoing>Flow_1fkv7k9</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:task id="Activity_0shpwi2" name="Visitar portal do microcurso">
+      <bpmn:incoming>Flow_1fkv7k9</bpmn:incoming>
+      <bpmn:outgoing>Flow_0wn3pfm</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_1fkv7k9" sourceRef="StartEvent_1" targetRef="Activity_0shpwi2" />
+    <bpmn:task id="Activity_1f09fiv" name="Planejar ações da semana">
+      <bpmn:incoming>Flow_1didxq1</bpmn:incoming>
+      <bpmn:outgoing>Flow_1b128ax</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Activity_0p87e72" name="Identificar recursos oferecidos pelo microcurso">
+      <bpmn:incoming>Flow_0wn3pfm</bpmn:incoming>
+      <bpmn:outgoing>Flow_1didxq1</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_0wn3pfm" sourceRef="Activity_0shpwi2" targetRef="Activity_0p87e72" />
+    <bpmn:sequenceFlow id="Flow_1didxq1" sourceRef="Activity_0p87e72" targetRef="Activity_1f09fiv" />
+    <bpmn:endEvent id="Event_0av7t9e" name="Ações planejadas">
+      <bpmn:incoming>Flow_1b128ax</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1b128ax" sourceRef="Activity_1f09fiv" targetRef="Event_0av7t9e" />
+    <bpmn:textAnnotation id="TextAnnotation_0l4m0by">
+      <bpmn:text>Dependendo do seu estilo, você pode fazer o registro pertinente indicando quando e onde será executada, cada ação, dentre outros detalhes.</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_0y8bqhz" sourceRef="Activity_1f09fiv" targetRef="TextAnnotation_0l4m0by" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_0lusk8g">
+      <bpmndi:BPMNShape id="TextAnnotation_0l4m0by_di" bpmnElement="TextAnnotation_0l4m0by">
+        <dc:Bounds x="520" y="80" width="300" height="60" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1fkv7k9_di" bpmnElement="Flow_1fkv7k9">
+        <di:waypoint x="238" y="207" />
+        <di:waypoint x="280" y="207" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0wn3pfm_di" bpmnElement="Flow_0wn3pfm">
+        <di:waypoint x="380" y="207" />
+        <di:waypoint x="430" y="207" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1didxq1_di" bpmnElement="Flow_1didxq1">
+        <di:waypoint x="530" y="207" />
+        <di:waypoint x="580" y="207" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1b128ax_di" bpmnElement="Flow_1b128ax">
+        <di:waypoint x="680" y="207" />
+        <di:waypoint x="732" y="207" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Activity_0p87e72_di" bpmnElement="Activity_0p87e72">
+        <dc:Bounds x="430" y="167" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1f09fiv_di" bpmnElement="Activity_1f09fiv">
+        <dc:Bounds x="580" y="167" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0shpwi2_di" bpmnElement="Activity_0shpwi2">
+        <dc:Bounds x="280" y="167" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="202" y="189" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="179" y="232" width="83" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0av7t9e_di" bpmnElement="Event_0av7t9e">
+        <dc:Bounds x="732" y="189" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="707" y="232" width="87" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_0y8bqhz_di" bpmnElement="Association_0y8bqhz">
+        <di:waypoint x="609" y="167" />
+        <di:waypoint x="594" y="140" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
