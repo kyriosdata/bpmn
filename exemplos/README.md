@@ -9,3 +9,4 @@ Abaixo seguem os exemplos:
 1. [Posto de saúde](posto-saude)
 1. [Segunda opinião](segunda-opiniao)
 1. [Protocolo de regulação](protocolo-regulacao)
+1. [Certificado Digital](certificado-digital)
