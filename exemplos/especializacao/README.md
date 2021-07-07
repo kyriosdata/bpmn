@@ -22,7 +22,6 @@ O que foi planejado precisa ser realizado, item por item, ou ação por ação.
 Abaixo a execução de cada ação é dividida em três subprocessos: (a) preparar
 para florescer; (b) identificar ação e (c) florescer (a execução da ação).
 
-> Sim, aprender aqui é sinônimo de florescer, o que está ligado à satisfação, e o oposto de "no pain no gain". Vamos promover o nosso bem-estar por meio do
-> aprendizado.
+> Sim, aprender aqui é sinônimo de florescer, o que está ligado à satisfação, e que é exatamente o oposto de "no pain no gain". Podemos promover o nosso bem-estar por meio do aprendizado e entendemos que isso é bom.
 
 <img src="executar-acao.png" width="800">
