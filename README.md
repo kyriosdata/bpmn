@@ -17,7 +17,7 @@ como "Administrar imunobiológico", então estará descrevendo
 um _workflow_, ou fluxo de trabalho. _Workflow_ está no 
 nível tático, não estratégico. Tudo tem relação com 
 atividades, tarefas e a execução delas ao longo do tempo,
-assim como quem participa e o que é produzido e utilziado
+assim como quem participa e o que é produzido e utilizado
 como entrada. 
 
 Em ambos os casos, estratégico ou tático, estará usando, 
